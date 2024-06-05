@@ -1,0 +1,21 @@
+"use client";
+import { Button } from "@/components/ui/button";
+import { Upload } from "lucide-react";
+import React from "react";
+import { useCSVReader } from "react-papaparse";
+type Props = {
+  onUpload: (results: any) => void;
+};
+export default function UpLoadButton({ onUpload }: Props) {
+  const { CSVReader } = useCSVReader();
+  return (
+    <CSVReader onUploadAccepted={onUpload}>
+      {({ getRootProps }: any) => (
+        <Button size="sm" className="w-full lg:w-auto" {...getRootProps()}>
+          <Upload className="size-4 mr-2" />
+          Import
+        </Button>
+      )}
+    </CSVReader>
+  );
+}
