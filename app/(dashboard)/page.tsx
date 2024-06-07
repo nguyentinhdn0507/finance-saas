@@ -1,11 +1,9 @@
-import DataCharts from "@/components/DataCharts";
-import DataGrid from "@/components/DataGrid";
+import DashBoardLayout from "./dashboardlayout";
 
 export default function DashBoardPage() {
   return (
-    <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
-      <DataGrid />
-      <DataCharts />
-    </div>
+    <>
+      <DashBoardLayout />
+    </>
   );
 }

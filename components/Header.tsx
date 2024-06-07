@@ -6,6 +6,7 @@ import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
 import { Loader2 } from "lucide-react";
 import WelcomeMsg from "./WelcomeMsg";
 import Filters from "./Filters";
+import { auth } from "@clerk/nextjs/server";
 
 export default function Header() {
   return (
@@ -17,7 +18,7 @@ export default function Header() {
             <Navigation />
           </div>
           <ClerkLoaded>
-            <UserButton afterSignOutUrl="/" />
+            <UserButton afterSignOutUrl="/sign-in" />
           </ClerkLoaded>
           <ClerkLoading>
             <Loader2 className="size-9 animate-spin text-slate-400" />
