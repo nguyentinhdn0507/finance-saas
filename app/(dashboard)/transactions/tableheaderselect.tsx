@@ -6,27 +6,33 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import React from "react";
+
 type Props = {
   columnIndex: number;
   selectedColumns: Record<string, string | null>;
-  onChange: (columnIndex: number, value: string) => void;
+  onChange: (columnIndex: number, value: string | null) => void;
 };
-const options = ["amount", "payee", "notes", "date"];
-export default function TableHeaderSelect({ selectedColumns, columnIndex, onChange }: Props) {
+
+const options = ["amount", "date", "payee"];
+
+export const TableHeadSelect = ({ columnIndex, selectedColumns, onChange }: Props) => {
   const currentSelection = selectedColumns[`column_${columnIndex}`];
+
   return (
-    <Select value={currentSelection || ""}>
+    <Select
+      value={currentSelection || ""}
+      onValueChange={(value: string) => onChange(columnIndex, value)}
+    >
       <SelectTrigger
         className={cn(
-          "focus:ring-offset-0 focus:ring-transparent outline-none border-none bg-transparent capitalize ",
+          "focus:ring-offset-0 focus:ring-transparent outline-none border-none bg-transparent capitalize",
           currentSelection && "text-blue-500",
         )}
       >
         <SelectValue placeholder="Skip" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="skip">skip</SelectItem>
+        <SelectItem value="skip">Skip</SelectItem>
         {options.map((option, index) => {
           const disabled =
             Object.values(selectedColumns).includes(option) &&
@@ -40,4 +46,4 @@ export default function TableHeaderSelect({ selectedColumns, columnIndex, onChan
       </SelectContent>
     </Select>
   );
-}
+};

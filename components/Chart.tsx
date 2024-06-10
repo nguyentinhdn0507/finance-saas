@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { AreaChart, BarChart, FileSearch, LineChart } from "lucide-react";
-import AreaVariant from "./AreaVariant";
-import BarVariant from "./BarVariant";
-import LineVariant from "./LineVariant";
+
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { AreaVariant } from "./AreaVariant";
+import { BarVariant } from "./BarVariant";
+import { LineVariant } from "./LineVariant";
 type Props = {
   data?: {
     date: string;

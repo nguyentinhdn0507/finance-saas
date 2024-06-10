@@ -1,4 +1,7 @@
 import { format } from "date-fns";
+import { Line, LineChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis } from "recharts";
+import { CustomTooltip } from "./CustomTooltip";
+
 type Props = {
   data: {
     date: string;
@@ -6,9 +9,8 @@ type Props = {
     expenses: number;
   }[];
 };
-import { Line, LineChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis } from "recharts";
-import CustomTooltip from "./CustomTooltip";
-export default function LineVariant({ data }: Props) {
+
+export const LineVariant = ({ data }: Props) => {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <LineChart data={data}>
@@ -22,9 +24,21 @@ export default function LineVariant({ data }: Props) {
           tickMargin={16}
         />
         <Tooltip content={<CustomTooltip />} />
-        <Line dot={false} dataKey="income" stroke="#3d82f6" className="drop-shadow-sm" />
-        <Line dot={false} dataKey="expenses" stroke="#f43f5e" className="drop-shadow-sm" />
+        <Line
+          dot={false}
+          dataKey="income"
+          stroke="#3d82f6"
+          strokeWidth={2}
+          className="drop-shadow-sm"
+        />
+        <Line
+          dot={false}
+          dataKey="expenses"
+          stroke="#f43f5e"
+          strokeWidth={2}
+          className="drop-shadow-sm"
+        />
       </LineChart>
     </ResponsiveContainer>
   );
-}
+};

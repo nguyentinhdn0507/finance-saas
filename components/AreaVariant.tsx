@@ -1,7 +1,7 @@
 import { format } from "date-fns";
-import React from "react";
-import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis } from "recharts";
-import CustomTooltip from "./CustomTooltip";
+import { Area, AreaChart, CartesianGrid, ResponsiveContainer, XAxis, Tooltip } from "recharts";
+import { CustomTooltip } from "./CustomTooltip";
+
 type Props = {
   data: {
     date: string;
@@ -9,7 +9,8 @@ type Props = {
     expenses: number;
   }[];
 };
-export default function AreaVariant({ data }: Props) {
+
+export const AreaVariant = ({ data }: Props) => {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <AreaChart data={data}>
@@ -54,4 +55,4 @@ export default function AreaVariant({ data }: Props) {
       </AreaChart>
     </ResponsiveContainer>
   );
-}
+};

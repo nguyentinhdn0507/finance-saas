@@ -18,7 +18,7 @@ export default function Header() {
             <Navigation />
           </div>
           <ClerkLoaded>
-            <UserButton afterSignOutUrl="/sign-in" />
+            <UserButton afterSignOutUrl="/" />
           </ClerkLoaded>
           <ClerkLoading>
             <Loader2 className="size-9 animate-spin text-slate-400" />

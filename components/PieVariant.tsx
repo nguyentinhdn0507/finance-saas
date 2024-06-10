@@ -1,16 +1,17 @@
-import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import { formatPercentage } from "@/lib/utils";
-import CategoryTooltip from "./CategoryTooltip";
+import { ResponsiveContainer, PieChart, Legend, Pie, Cell, Tooltip } from "recharts";
+import { CategoryTooltip } from "./CategoryTooltip";
 
-const COLORS = ["#00627", "#12C6FF", "#FF647F", "#FF935"];
+const COLORS = ["#0062FF", "#12C6FF", "#FF647F", "#FF9354"];
+
 type Props = {
-  data?: {
+  data: {
     name: string;
     value: number;
   }[];
 };
 
-export default function PieVariant({ data }: Props) {
+export const PieVariant = ({ data }: Props) => {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <PieChart>
@@ -21,11 +22,11 @@ export default function PieVariant({ data }: Props) {
           iconType="circle"
           content={({ payload }: any) => {
             return (
-              <ul className="flex flex-col space-y-2">
-                {payload.map((entry: any, index: number) => (
+              <div className="flex flex-col space-y-2">
+                {payload?.map((entry: any, index: number) => (
                   <li key={`item-${index}`} className="flex items-center space-x-2">
                     <span
-                      className="w-3 h-3 rounded-full"
+                      className="size-2 rounded-full"
                       style={{ backgroundColor: entry.color }}
                     />
                     <div className="space-x-1">
@@ -36,13 +37,12 @@ export default function PieVariant({ data }: Props) {
                     </div>
                   </li>
                 ))}
-              </ul>
+              </div>
             );
           }}
         />
         <Tooltip content={<CategoryTooltip />} />
         <Pie
-          dataKey="value"
           data={data}
           cx="50%"
           cy="50%"
@@ -50,13 +50,14 @@ export default function PieVariant({ data }: Props) {
           innerRadius={60}
           paddingAngle={2}
           fill="#8884d8"
+          dataKey="value"
           labelLine={false}
         >
-          {data?.map((entry, index) => (
+          {data.map((_entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
       </PieChart>
     </ResponsiveContainer>
   );
-}
+};

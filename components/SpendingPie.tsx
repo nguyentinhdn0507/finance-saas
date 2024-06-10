@@ -3,9 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { FileSearch, PieChart, Radar, Target } from "lucide-react";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import PieVariant from "./PieVariant";
-import RadarVariant from "./RadarVariant";
-import RadialVariant from "./RadialVariant";
+import { PieVariant } from "./PieVariant";
+import { RadarVariant } from "./RadarVariant";
+import { RadialVariant } from "./RadialVariant";
+
 type Props = {
   data?: {
     name: string;
